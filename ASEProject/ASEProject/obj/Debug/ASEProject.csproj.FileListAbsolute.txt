@@ -2,9 +2,9 @@ C:\Users\Admin\source\repos\C#\ASEProject\ASEProject\ASEProject\bin\Debug\ASEPro
 C:\Users\Admin\source\repos\C#\ASEProject\ASEProject\ASEProject\bin\Debug\ASEProject.exe
 C:\Users\Admin\source\repos\C#\ASEProject\ASEProject\ASEProject\bin\Debug\ASEProject.pdb
 C:\Users\Admin\source\repos\C#\ASEProject\ASEProject\ASEProject\obj\Debug\ASEProject.csprojAssemblyReference.cache
-C:\Users\Admin\source\repos\C#\ASEProject\ASEProject\ASEProject\obj\Debug\ASEProject.TurtleGraphics.resources
 C:\Users\Admin\source\repos\C#\ASEProject\ASEProject\ASEProject\obj\Debug\ASEProject.Properties.Resources.resources
 C:\Users\Admin\source\repos\C#\ASEProject\ASEProject\ASEProject\obj\Debug\ASEProject.csproj.GenerateResource.cache
 C:\Users\Admin\source\repos\C#\ASEProject\ASEProject\ASEProject\obj\Debug\ASEProject.csproj.CoreCompileInputs.cache
 C:\Users\Admin\source\repos\C#\ASEProject\ASEProject\ASEProject\obj\Debug\ASEProject.exe
 C:\Users\Admin\source\repos\C#\ASEProject\ASEProject\ASEProject\obj\Debug\ASEProject.pdb
+C:\Users\Admin\source\repos\C#\ASEProject\ASEProject\ASEProject\obj\Debug\ASEProject.frmGraphics.resources
