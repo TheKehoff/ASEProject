@@ -16,20 +16,20 @@ namespace ASEProject
 {
     public partial class frmGraphics : Form
     {
-        bool saved;
-        int index;
-        string penColour = "white";
-        Bitmap buffer;
+        bool saved;                 //constant bool to check if saved
+        int index;                  //int to check what line of the textbox we are on for prining errors
+        string penColour = "white"; //set default colour as white on black background
+        Bitmap buffer;              //offscreen bitmap for drawing
+        PointF startPos = new PointF(0, 0);
         public frmGraphics()
         {
-           // string penColour = "white";
             buffer = new Bitmap(300, 300);
             InitializeComponent();
         }
 
         private void Form1_Load(object sender, EventArgs e)
         {
-
+            
         }
 
         private void btnExectute_Click(object sender, EventArgs e)
@@ -43,17 +43,18 @@ namespace ASEProject
 
         private void commandHandler(string s)                            //Handles parsing and execution of commands
         {
+            Graphics g = Graphics.FromImage(buffer);
             index++;                                                     //Index for which line we are on
             char[] delimiterChars = { ' ', ',' };                        //Initiates a char array for the delimiter characters, this is where the command will be split.
             String[] command = s.Split(delimiterChars);                  //Splits the string, first position in the array will be the command.
             switch (command[0])
             {
-                case "penColour":
-                    if (System.Text.RegularExpressions.Regex.IsMatch(command[1], "^[a-zA-Z]"))
+                case "penColour":                                         
+                    if (System.Text.RegularExpressions.Regex.IsMatch(command[1], "^[a-zA-Z]")) //Makes sure the user can only enter alphabetical chars
                     {
-                        penColour = command[1];
+                        penColour = command[1]; //Sets pen colour according to NET 3.5 System.Drawing.Color
                     }
-                    else
+                    else //Prints error message incase of invalid argument
                     {
                         txtboxConsoleOut.AppendText(Environment.NewLine);
                         txtboxConsoleOut.Text = txtboxConsoleOut.Text + "Error on Line: " + index;
@@ -61,8 +62,28 @@ namespace ASEProject
                         txtboxConsoleOut.Text = txtboxConsoleOut.Text + "Invalid Argument: This Command Only Alphabetical Chars";
                     }   
                         break;
-                case "drawTo":
-                    
+                case "drawLine":
+                   
+                    Pen pen = new Pen(Color.FromName(penColour)); //makes new pen in runtime, this allows the user to select from a wide range of colours without the need for multiple pens
+                    int i = 0;
+                    Single[] spoints = new Single[4];             //single array for creating PointF object
+
+                    foreach (var item in command)                 //For each item in command array convert to single and save into array
+                    {
+                        if (Single.TryParse(item, out Single point))
+                            {
+                            spoints[i] = point;
+                            i++;
+                            }
+                    } 
+
+                    PointF pt1 = new PointF(spoints[0], spoints[1]); //Grab coodinates from array
+                    PointF pt2 = new PointF(spoints[2], spoints[3]);
+
+                    g.DrawLine(pen, pt1, pt2);                       //Draw line on bitmap
+                    this.Refresh();                                  //Call paint event
+                    pen.Dispose();                                   
+
                     break;
                 case "moveTo":
                     break;
@@ -76,8 +97,11 @@ namespace ASEProject
                 case "fill":
                     break;
                 case "reset":
+                    startPos = new PointF(0, 0);
                     break;
                 case "clear":
+                    g.Clear(Color.Black);
+                    this.Refresh();
                     break;
 
             }
@@ -111,6 +135,18 @@ namespace ASEProject
                 saved = true;
             }
 
+        }
+
+        private void pboxDrawingPanel_Paint(object sender, PaintEventArgs e)
+        {
+            Graphics windowG = e.Graphics;
+            windowG.DrawImageUnscaled(buffer, 0, 0);
+        }
+
+        private void btnClear_Click(object sender, EventArgs e)
+        {
+            g.Clear(Color.Black);
+            this.Refresh();
         }
     }
 }
