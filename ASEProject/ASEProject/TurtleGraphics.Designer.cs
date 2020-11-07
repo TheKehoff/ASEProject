@@ -41,6 +41,7 @@
             this.helpToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.aboutToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.btnClear = new System.Windows.Forms.Button();
+            this.txtboxConsoleOut = new System.Windows.Forms.TextBox();
             ((System.ComponentModel.ISupportInitialize)(this.pboxDrawingPanel)).BeginInit();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
@@ -52,7 +53,6 @@
             this.rtxtCommandLine.Size = new System.Drawing.Size(276, 300);
             this.rtxtCommandLine.TabIndex = 0;
             this.rtxtCommandLine.Text = "";
-            this.rtxtCommandLine.TextChanged += new System.EventHandler(this.rtxtCommandLine_TextChanged);
             // 
             // pboxDrawingPanel
             // 
@@ -98,20 +98,22 @@
             // saveToolStripMenuItem1
             // 
             this.saveToolStripMenuItem1.Name = "saveToolStripMenuItem1";
-            this.saveToolStripMenuItem1.Size = new System.Drawing.Size(100, 22);
+            this.saveToolStripMenuItem1.Size = new System.Drawing.Size(180, 22);
             this.saveToolStripMenuItem1.Text = "Save";
+            this.saveToolStripMenuItem1.Click += new System.EventHandler(this.saveToolStripMenuItem1_Click);
             // 
             // loadToolStripMenuItem1
             // 
             this.loadToolStripMenuItem1.Name = "loadToolStripMenuItem1";
-            this.loadToolStripMenuItem1.Size = new System.Drawing.Size(100, 22);
+            this.loadToolStripMenuItem1.Size = new System.Drawing.Size(180, 22);
             this.loadToolStripMenuItem1.Text = "Load";
             // 
             // exitToolStripMenuItem
             // 
             this.exitToolStripMenuItem.Name = "exitToolStripMenuItem";
-            this.exitToolStripMenuItem.Size = new System.Drawing.Size(100, 22);
+            this.exitToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.exitToolStripMenuItem.Text = "Exit";
+            this.exitToolStripMenuItem.Click += new System.EventHandler(this.exitToolStripMenuItem_Click);
             // 
             // loadToolStripMenuItem
             // 
@@ -141,12 +143,22 @@
             this.btnClear.Text = "Clear";
             this.btnClear.UseVisualStyleBackColor = true;
             // 
+            // txtboxConsoleOut
+            // 
+            this.txtboxConsoleOut.Location = new System.Drawing.Point(336, 340);
+            this.txtboxConsoleOut.Multiline = true;
+            this.txtboxConsoleOut.Name = "txtboxConsoleOut";
+            this.txtboxConsoleOut.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
+            this.txtboxConsoleOut.Size = new System.Drawing.Size(300, 58);
+            this.txtboxConsoleOut.TabIndex = 5;
+            // 
             // frmGraphics
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.Control;
             this.ClientSize = new System.Drawing.Size(684, 429);
+            this.Controls.Add(this.txtboxConsoleOut);
             this.Controls.Add(this.btnClear);
             this.Controls.Add(this.btnExectute);
             this.Controls.Add(this.pboxDrawingPanel);
@@ -179,6 +191,7 @@
         private System.Windows.Forms.ToolStripMenuItem helpToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem aboutToolStripMenuItem;
         private System.Windows.Forms.Button btnClear;
+        private System.Windows.Forms.TextBox txtboxConsoleOut;
     }
 }
 
