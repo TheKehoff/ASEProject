@@ -42,6 +42,7 @@
             this.aboutToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.btnClear = new System.Windows.Forms.Button();
             this.txtboxConsoleOut = new System.Windows.Forms.TextBox();
+            this.txtCLI = new System.Windows.Forms.TextBox();
             ((System.ComponentModel.ISupportInitialize)(this.pboxDrawingPanel)).BeginInit();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
@@ -50,7 +51,7 @@
             // 
             this.rtxtCommandLine.Location = new System.Drawing.Point(31, 34);
             this.rtxtCommandLine.Name = "rtxtCommandLine";
-            this.rtxtCommandLine.Size = new System.Drawing.Size(276, 300);
+            this.rtxtCommandLine.Size = new System.Drawing.Size(276, 281);
             this.rtxtCommandLine.TabIndex = 0;
             this.rtxtCommandLine.Text = "";
             // 
@@ -108,6 +109,7 @@
             this.loadToolStripMenuItem1.Name = "loadToolStripMenuItem1";
             this.loadToolStripMenuItem1.Size = new System.Drawing.Size(100, 22);
             this.loadToolStripMenuItem1.Text = "Load";
+            this.loadToolStripMenuItem1.Click += new System.EventHandler(this.loadToolStripMenuItem1_Click);
             // 
             // exitToolStripMenuItem
             // 
@@ -154,12 +156,20 @@
             this.txtboxConsoleOut.Size = new System.Drawing.Size(300, 58);
             this.txtboxConsoleOut.TabIndex = 5;
             // 
+            // txtCLI
+            // 
+            this.txtCLI.Location = new System.Drawing.Point(31, 333);
+            this.txtCLI.Name = "txtCLI";
+            this.txtCLI.Size = new System.Drawing.Size(276, 20);
+            this.txtCLI.TabIndex = 6;
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.Control;
             this.ClientSize = new System.Drawing.Size(684, 429);
+            this.Controls.Add(this.txtCLI);
             this.Controls.Add(this.txtboxConsoleOut);
             this.Controls.Add(this.btnClear);
             this.Controls.Add(this.btnExectute);
@@ -170,7 +180,6 @@
             this.MainMenuStrip = this.menuStrip1;
             this.Name = "Form1";
             this.Text = "Turtle Graphics";
-            this.Load += new System.EventHandler(this.Form1_Load);
             ((System.ComponentModel.ISupportInitialize)(this.pboxDrawingPanel)).EndInit();
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
@@ -194,6 +203,7 @@
         private System.Windows.Forms.ToolStripMenuItem aboutToolStripMenuItem;
         private System.Windows.Forms.Button btnClear;
         public System.Windows.Forms.TextBox txtboxConsoleOut;
+        private System.Windows.Forms.TextBox txtCLI;
     }
 }
 

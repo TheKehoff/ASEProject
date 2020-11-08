@@ -1,0 +1,9 @@
+C:\Users\Admin\source\repos\C#\ASEProject\ASEProject\ASEProject\bin\Release\ASEProject.exe.config
+C:\Users\Admin\source\repos\C#\ASEProject\ASEProject\ASEProject\bin\Release\ASEProject.exe
+C:\Users\Admin\source\repos\C#\ASEProject\ASEProject\ASEProject\bin\Release\ASEProject.pdb
+C:\Users\Admin\source\repos\C#\ASEProject\ASEProject\ASEProject\obj\Release\ASEProject.Form1.resources
+C:\Users\Admin\source\repos\C#\ASEProject\ASEProject\ASEProject\obj\Release\ASEProject.Properties.Resources.resources
+C:\Users\Admin\source\repos\C#\ASEProject\ASEProject\ASEProject\obj\Release\ASEProject.csproj.GenerateResource.cache
+C:\Users\Admin\source\repos\C#\ASEProject\ASEProject\ASEProject\obj\Release\ASEProject.csproj.CoreCompileInputs.cache
+C:\Users\Admin\source\repos\C#\ASEProject\ASEProject\ASEProject\obj\Release\ASEProject.exe
+C:\Users\Admin\source\repos\C#\ASEProject\ASEProject\ASEProject\obj\Release\ASEProject.pdb
