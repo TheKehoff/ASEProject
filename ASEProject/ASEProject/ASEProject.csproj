@@ -47,7 +47,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Command Handling.cs" />
+    <Compile Include="CommandHandling.cs" />
     <Compile Include="TurtleGraphics.cs">
       <SubType>Form</SubType>
     </Compile>

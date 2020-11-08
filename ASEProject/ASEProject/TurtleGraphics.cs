@@ -16,12 +16,12 @@ namespace ASEProject
 {
     public partial class Form1 : Form
     {
-
-        bool saved;                 //constant bool to check if saved
-        int index;                  //int to check what line of the textbox we are on for prining errors
-        string penColour = "white"; //set default colour as white on black background
-        Bitmap buffer;              //offscreen bitmap for drawing
-        PointF startPos = new PointF(0, 0);
+        public bool fill;                  //bool to check if fill is on or off
+        public bool saved;                 //constant bool to check if saved
+        public int index;                  //int to check what line of the textbox we are on for prining errors
+        public string penColour = "white"; //set default colour as white on black background
+        public Bitmap buffer;              //offscreen bitmap for drawing
+        public PointF startPos = new PointF(0, 0);
         public Form1()
         {
             buffer = new Bitmap(300, 300);
@@ -38,11 +38,12 @@ namespace ASEProject
             txtboxConsoleOut.Text = "";
             index = 0;
             var lines = rtxtCommandLine.Lines;                           //Splits the lines in text window and adds them to an array 
+           // CommandHandling command = new CommandHandling();
             Array.ForEach(lines, s => commandHandler(s));                //For each line send the string to the command handler method
 
         }
 
-        private void commandHandler(string s)                            //Handles parsing and execution of commands
+       private void commandHandler(string s)                            //Handles parsing and execution of commands
         {
             int i;
             Graphics g = Graphics.FromImage(buffer);
@@ -68,9 +69,9 @@ namespace ASEProject
                     
                     Pen dLinePen = new Pen(Color.FromName(penColour)); //makes new pen in runtime, this allows the user to select from a wide range of colours without the need for multiple pens
                     i = 0;
-                    Single[] points1 = new Single[4];             //single array for creating PointF object
+                    Single[] points1 = new Single[command.Length];             //single array for creating PointF object
 
-                    foreach (var item in command)                 //For each item in command array convert to single and save into array
+                    foreach (var item in command.Skip(1))                 //For each item in command array convert to single and save into array
                     {
                         if (Single.TryParse(item, out Single point))
                             {
@@ -89,7 +90,7 @@ namespace ASEProject
                 case "drawTo":                                              //Handles draw to starts at starting pos and draws to argument.
                     Pen dToPen = new Pen(Color.FromName(penColour));
                     i = 0;
-                    Single[] points = new Single[2];
+                    Single[] points = new Single[command.Length];
                      {
                         foreach (var item in command.Skip(1)) //skips first element in array as it is the command 
                         {
@@ -116,9 +117,9 @@ namespace ASEProject
                     startPos = ptTo;
                     break;
                 case "moveTo":
-                    Single[] points2 = new Single[2];
+                    Single[] points2 = new Single[command.Length];
                     i = 0;
-                    foreach (var item in command)
+                    foreach (var item in command.Skip(1))
                     {
                         if(Single.TryParse(item, out Single point))
                         {
@@ -131,10 +132,10 @@ namespace ASEProject
                     startPos = ptMTo;
                     break;
                 case "rect":
-                    int[] points3 = new int[2];
+                    int[] points3 = new int[command.Length];
                     Pen rectPen = new Pen(Color.FromName(penColour));
                     i = 0;
-                    foreach (var item in command)
+                    foreach (var item in command.Skip(1))
                     {
                         if (int.TryParse(item, out int point))
                         {
@@ -143,7 +144,6 @@ namespace ASEProject
                         }
                     }
                     Size siRect = new Size(points3[0], points3[1]);
-                    System.Drawing.Point.Round(startPos);
                     Point rectPoint = new Point((Size)Point.Round(startPos));
                     Rectangle rect = new Rectangle(rectPoint, siRect);
                     g.DrawRectangle(rectPen, rect);
@@ -151,6 +151,21 @@ namespace ASEProject
                     rectPen.Dispose();
                     break;
                 case "circle":
+                    int[] points4 = new int[command.Length];
+                    Pen circPen = new Pen(Color.FromName(penColour));
+                    foreach (var item in command.Skip(1))
+                    {
+                        if (int.TryParse(item, out int point))
+                        {
+
+                        }
+                    }
+
+
+                    Point circPoint = new Point((Size)Point.Round(startPos));
+                    Rectangle circle = new Rectangle(circPoint, )
+                   
+
                     break;
                 case "trig":
                     System.Console.WriteLine("thisworks");

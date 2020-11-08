@@ -193,7 +193,7 @@
         private System.Windows.Forms.ToolStripMenuItem helpToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem aboutToolStripMenuItem;
         private System.Windows.Forms.Button btnClear;
-        private System.Windows.Forms.TextBox txtboxConsoleOut;
+        public System.Windows.Forms.TextBox txtboxConsoleOut;
     }
 }
 
