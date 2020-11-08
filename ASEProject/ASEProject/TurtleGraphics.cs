@@ -14,14 +14,15 @@ using System.Xml;
 
 namespace ASEProject
 {
-    public partial class frmGraphics : Form
+    public partial class Form1 : Form
     {
+
         bool saved;                 //constant bool to check if saved
         int index;                  //int to check what line of the textbox we are on for prining errors
         string penColour = "white"; //set default colour as white on black background
         Bitmap buffer;              //offscreen bitmap for drawing
         PointF startPos = new PointF(0, 0);
-        public frmGraphics()
+        public Form1()
         {
             buffer = new Bitmap(300, 300);
             InitializeComponent();
@@ -43,6 +44,7 @@ namespace ASEProject
 
         private void commandHandler(string s)                            //Handles parsing and execution of commands
         {
+            int i;
             Graphics g = Graphics.FromImage(buffer);
             index++;                                                     //Index for which line we are on
             char[] delimiterChars = { ' ', ',' };                        //Initiates a char array for the delimiter characters, this is where the command will be split.
@@ -63,31 +65,90 @@ namespace ASEProject
                     }   
                         break;
                 case "drawLine":
-                   
-                    Pen pen = new Pen(Color.FromName(penColour)); //makes new pen in runtime, this allows the user to select from a wide range of colours without the need for multiple pens
-                    int i = 0;
-                    Single[] spoints = new Single[4];             //single array for creating PointF object
+                    
+                    Pen dLinePen = new Pen(Color.FromName(penColour)); //makes new pen in runtime, this allows the user to select from a wide range of colours without the need for multiple pens
+                    i = 0;
+                    Single[] points1 = new Single[4];             //single array for creating PointF object
 
                     foreach (var item in command)                 //For each item in command array convert to single and save into array
                     {
                         if (Single.TryParse(item, out Single point))
                             {
-                            spoints[i] = point;
-                            i++;
+                                points1[i] = point;
+                                i++;
                             }
                     } 
 
-                    PointF pt1 = new PointF(spoints[0], spoints[1]); //Grab coodinates from array
-                    PointF pt2 = new PointF(spoints[2], spoints[3]);
+                    PointF pt1 = new PointF(points1[0], points1[1]); //Grab coodinates from array
+                    PointF pt2 = new PointF(points1[2], points1[3]);
 
-                    g.DrawLine(pen, pt1, pt2);                       //Draw line on bitmap
+                    g.DrawLine(dLinePen, pt1, pt2);                     //Draw line on bitmap
                     this.Refresh();                                  //Call paint event
-                    pen.Dispose();                                   
+                    dLinePen.Dispose();                                   
+                    break; 
+                case "drawTo":                                              //Handles draw to starts at starting pos and draws to argument.
+                    Pen dToPen = new Pen(Color.FromName(penColour));
+                    i = 0;
+                    Single[] points = new Single[2];
+                     {
+                        foreach (var item in command.Skip(1)) //skips first element in array as it is the command 
+                        {
+                            if (Single.TryParse(item, out Single point))
+                            {
+                                points[i] = point;
+                                i++;
+                            }
+                            else
+                            {
+                                txtboxConsoleOut.AppendText(Environment.NewLine);
+                                txtboxConsoleOut.Text = txtboxConsoleOut.Text + "Error on Line: " + index;
+                                txtboxConsoleOut.AppendText(Environment.NewLine);
+                                txtboxConsoleOut.Text = txtboxConsoleOut.Text + "Invalid Argument: This Command Only Numerical Chars 0-300";
 
+                            }
+                        }
+                    }
+
+                    PointF ptTo = new PointF(points[0], points[1]);
+                    g.DrawLine(dToPen, startPos, ptTo);
+                    this.Refresh();
+                    dToPen.Dispose();
+                    startPos = ptTo;
                     break;
                 case "moveTo":
+                    Single[] points2 = new Single[2];
+                    i = 0;
+                    foreach (var item in command)
+                    {
+                        if(Single.TryParse(item, out Single point))
+                        {
+                            points2[i] = point;
+                            i++;
+                        }
+                    }
+
+                    PointF ptMTo = new PointF(points2[0], points2[1]);
+                    startPos = ptMTo;
                     break;
                 case "rect":
+                    int[] points3 = new int[2];
+                    Pen rectPen = new Pen(Color.FromName(penColour));
+                    i = 0;
+                    foreach (var item in command)
+                    {
+                        if (int.TryParse(item, out int point))
+                        {
+                            points3[i] = point;
+                            i++;
+                        }
+                    }
+                    Size siRect = new Size(points3[0], points3[1]);
+                    System.Drawing.Point.Round(startPos);
+                    Point rectPoint = new Point((Size)Point.Round(startPos));
+                    Rectangle rect = new Rectangle(rectPoint, siRect);
+                    g.DrawRectangle(rectPen, rect);
+                    this.Refresh();
+                    rectPen.Dispose();
                     break;
                 case "circle":
                     break;
@@ -103,7 +164,6 @@ namespace ASEProject
                     g.Clear(Color.Black);
                     this.Refresh();
                     break;
-
             }
         }
 
@@ -145,6 +205,7 @@ namespace ASEProject
 
         private void btnClear_Click(object sender, EventArgs e)
         {
+            Graphics g = Graphics.FromImage(buffer);
             g.Clear(Color.Black);
             this.Refresh();
         }

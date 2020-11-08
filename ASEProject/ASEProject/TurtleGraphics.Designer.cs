@@ -1,6 +1,6 @@
 ﻿namespace ASEProject
 {
-    partial class frmGraphics
+    partial class Form1
     {
         /// <summary>
         /// Required designer variable.
@@ -28,7 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmGraphics));
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
             this.rtxtCommandLine = new System.Windows.Forms.RichTextBox();
             this.pboxDrawingPanel = new System.Windows.Forms.PictureBox();
             this.btnExectute = new System.Windows.Forms.Button();
@@ -154,7 +154,7 @@
             this.txtboxConsoleOut.Size = new System.Drawing.Size(300, 58);
             this.txtboxConsoleOut.TabIndex = 5;
             // 
-            // frmGraphics
+            // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -168,7 +168,7 @@
             this.Controls.Add(this.menuStrip1);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MainMenuStrip = this.menuStrip1;
-            this.Name = "frmGraphics";
+            this.Name = "Form1";
             this.Text = "Turtle Graphics";
             this.Load += new System.EventHandler(this.Form1_Load);
             ((System.ComponentModel.ISupportInitialize)(this.pboxDrawingPanel)).EndInit();

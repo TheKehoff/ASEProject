@@ -7,4 +7,4 @@ C:\Users\Admin\source\repos\C#\ASEProject\ASEProject\ASEProject\obj\Debug\ASEPro
 C:\Users\Admin\source\repos\C#\ASEProject\ASEProject\ASEProject\obj\Debug\ASEProject.csproj.CoreCompileInputs.cache
 C:\Users\Admin\source\repos\C#\ASEProject\ASEProject\ASEProject\obj\Debug\ASEProject.exe
 C:\Users\Admin\source\repos\C#\ASEProject\ASEProject\ASEProject\obj\Debug\ASEProject.pdb
-C:\Users\Admin\source\repos\C#\ASEProject\ASEProject\ASEProject\obj\Debug\ASEProject.frmGraphics.resources
+C:\Users\Admin\source\repos\C#\ASEProject\ASEProject\ASEProject\obj\Debug\ASEProject.Form1.resources
